@@ -2,56 +2,62 @@ package com.company;
 
 import java.util.Scanner;
 
-        public class Main {
+public class Main {
 
-            public static void main(String[] args) {
-                // 1 задача
-                System.out.println("№1");
-                for (int i = 0; i < 101; i++) {
-                    if (i % 2 == 0)
-                        System.out.print(i + " ");
+    public static void main(String[] args) {
+        // 1 задача
+        System.out.println("Задача №1");
+        Scanner name = new Scanner(System.in);
+        String a, b;
+        System.out.println("Введите два имени: ");
+        a = name.nextLine();
+        b = name.nextLine();
+        if (a.equals(b)){
+            System.out.println("Имена одинаковые, вот вам доллар $, купите себе индивидуальность.");
+        } else if(a.length() == b.length()) {
+            System.out.println("Колиечество символов в строке блаблабла");
+        } else {System.out.println("Конец");}
 
-                }
-                System.out.println(" ");
-                // 2 задача
-                System.out.println("№2");
+        // 2 задача
+        System.out.println("Задача №2");
+        Scanner wop = new Scanner(System.in);
+        int a, b, c, d;
+// Now let me see you
+        a = wop.nextInt();
+        b = wop.nextInt();
+        c = wop.nextInt();
+        d = wop.nextInt();
+        int tancuem = Math.min( a, b);
+        int pod = Math.min(c, d);
+        int minimal = Math.min(tancuem, pod);
+        System.out.println("Наииимеееньшее из вами введеных чисел это iq Асхаба = " + minimal);
 
-                Scanner num = new Scanner(System.in);
-                int m;
-                m = num.nextInt();
-                int n;
-                n = num.nextInt();
-                System.out.println("m = " + m);
-                System.out.println("n = " + n);
-                for (int i = 0; i < m; i++) {
-                    for (int j = 0; j < n; j++) {
-                        System.out.print("8");
-                    }
-                    System.out.println(" ");
-                }
-                System.out.println(" ");
+        // 3 задача
+        System.out.println("Задача №3");
+        Scanner coor = new Scanner(System.in);
+        int x, y;
+        System.out.println("Введите оси координат x и y и мы с помощью черной)00)0) магии покажем где лежит эта точка: ");
+        x = coor.nextInt();
+        y = coor.nextInt();
+        if (x==0 || y==0){System.out.println("По условию, точка НЕ ЛЕЖИТ НА ОСИ АЛЕ");}
+            if(x>0 && y >0) { System.out.println("I"); }
+            else if (x<0 && y>0) { System.out.println ("II"); }
+            else if (x<0 && y<0) { System.out.println ("III"); }
+            else if (x>0 && y<0) { System.out.println ("IV"); }
+            /*            ^
+                          |
+                          |
+                  II      |      I
+                          |
+                          |
+            ------------------------------>
+                          |
+                          |
+                  III     |      VI
+                          |
+                          |
 
-                // 3 задача
-                System.out.println("№3");
-                for(int i=1;i<=10;i++) {
-                    for (int j = 1; j <= i; j++) {
-                        System.out.print("8");
-                    }
-                    System.out.println(" ");
-                }
-                // 4 задача
-                System.out.println("№4");
-                Scanner znach = new Scanner(System.in);
-                int a;
-                a = znach.nextInt();
-                int b;
-                b = znach.nextInt();
-                System.out.println("a = " + a);
-                System.out.println("b = " + b);
-                if (a > b){
-                    System.out.println(b);
-                }
-                else System.out.println(a);
-            }
-        }
 
+            */
+
+}}
