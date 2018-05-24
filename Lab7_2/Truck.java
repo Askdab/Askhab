@@ -1,0 +1,88 @@
+package com.company;
+
+import java.util.ArrayList;
+
+public class Truck extends Sedan implements PassengersAuto, CargoAuto {
+    //Количество мест для груза + загруженность
+    private int cargoSpace;
+    private int usageCargoSpace = 0;
+    private ArrayList cargoList = new ArrayList();
+
+    //Для Pickup (подъемника)
+    public int getCargoSpace() {
+        return cargoSpace;
+    }
+
+    public int getUsageCargoSpace() {
+        return usageCargoSpace;
+    }
+
+    public void clearUsageCargoSpace() {
+        usageCargoSpace = 0;
+    }
+
+    public void setUsageCargoSpace(int a) {
+        usageCargoSpace = a;
+    }
+
+    public ArrayList getCargoList() {
+        return cargoList;
+    }
+
+    //Количество топлива
+    private int fuel = 20;
+
+    //Посмотреть загруженность машины
+    public void viewWorkload() {
+        super.viewWorkload();
+        System.out.println("Груз: " + cargoList.toString());
+    }
+
+    public Truck(int seatings, int cargoSpace) {
+        super(seatings);
+        this.cargoSpace = cargoSpace;
+    }
+
+    public void refill() {
+        fuel = 20;
+    }
+
+    public void cargoIn(String cargo) {
+        if (usageCargoSpace < cargoSpace) {
+            usageCargoSpace++;
+            this.cargoList.add(cargo);
+        } else {
+            System.out.println("Грузить уже некуда ваше " + cargo);
+        }
+    }
+
+    public void cargoOut(String cargo) {
+        if (usageCargoSpace != 0) {
+            usageCargoSpace--;
+            try {
+                this.cargoList.remove(cargo);
+            } catch (Exception error) {
+                System.out.println("Ошибка индекса листа");
+            }
+        } else {
+            System.out.println("Нечего сгружать, загружать надо");
+        }
+    }
+
+    //Особенность: метод moveTo есть в обоих интерфейсах. Здесь его достаточно привести один раз
+    //Да и два раза не получтся, так как он имеет одинаковое название и параметры
+    public void moveTo(String destination, int distance) {
+        if (distance > 20) {
+            System.out.println("Поездка невозможна. Слишком далеко");
+        } else {
+            if (fuel < distance) {
+                System.out.println("До " + destination + " не доедем. Не хватает " + (distance - fuel) +
+                        " единиц бензина. Дозаправтесь перед поездкой");
+            } else {
+                fuel -= distance;
+                System.out.println("К месту назначения " + destination + " успешно прибыли. Осталось " + fuel +
+                        " единиц бензина");
+            }
+        }
+    }
+}
